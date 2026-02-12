@@ -2,7 +2,7 @@ from datasets import load_dataset
 
 SEED = 42
 
-def load_ag_news():
+def load_ag_news() -> dict:
     dataset = load_dataset("ag_news")
 
     train_dev = dataset["train"].train_test_split(
@@ -15,4 +15,8 @@ def load_ag_news():
     dev_dataset = train_dev["test"]
     test_dataset = dataset["test"]
 
-    return train_dataset, dev_dataset, test_dataset
+    return {
+        "train": train_dataset,
+        "dev": dev_dataset,
+        "test": test_dataset
+    }
