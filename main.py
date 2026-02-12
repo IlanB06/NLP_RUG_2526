@@ -1,5 +1,8 @@
+from src.linear_models.eval_linear_models import evaluate_linear_models
+
+
 def main():
-    print("Hello from nlp!")
+    evaluate_linear_models()
 
 
 if __name__ == "__main__":
