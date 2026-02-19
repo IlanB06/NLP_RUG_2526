@@ -24,7 +24,6 @@ def evaluate_linear_models() -> None:
         plt.show()
         print("-" * 50)
 
-        gi
     print("Evaluating linear models on the dev set...")
     for model_name, model in models.items():
         y_pred = model.predict(datasets["dev"]["text"])
