@@ -11,6 +11,7 @@ def evaluate_linear_models() -> None:
     datasets = preprocess_ag_news()
     models = train_linear_models(datasets["train"]["text"], datasets["train"]["label"])
 
+    print("Evaluating linear models on the test set...")
     for model_name, model in models.items():
         y_pred = model.predict(datasets["test"]["text"])
         print(f"Model: {model_name}")
@@ -19,7 +20,21 @@ def evaluate_linear_models() -> None:
             f"Macro-F1: {f1_score(datasets['test']['label'], y_pred, average='macro')}"
         )
         ConfusionMatrixDisplay.from_predictions(datasets["test"]["label"], y_pred)
-        plt.title(f"Confusion Matrix for {model_name}")
+        plt.title(f"Confusion Matrix for {model_name} on test set")
+        plt.show()
+        print("-" * 50)
+
+        gi
+    print("Evaluating linear models on the dev set...")
+    for model_name, model in models.items():
+        y_pred = model.predict(datasets["dev"]["text"])
+        print(f"Model: {model_name}")
+        print(f"Accuracy: {accuracy_score(datasets['dev']['label'], y_pred)}")
+        print(
+            f"Macro-F1: {f1_score(datasets['dev']['label'], y_pred, average='macro')}"
+        )
+        ConfusionMatrixDisplay.from_predictions(datasets["dev"]["label"], y_pred)
+        plt.title(f"Confusion Matrix for {model_name} on dev set")
         plt.show()
         print("-" * 50)
 
