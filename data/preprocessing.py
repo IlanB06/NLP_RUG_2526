@@ -23,5 +23,6 @@ def preprocess_ag_news() -> dict:
             datasets[dataset]["text"]
         )
         vectorized_datasets[dataset]["label"] = datasets[dataset]["label"]
-
+        if dataset == "test":
+            vectorized_datasets[dataset]["raw_text"] = datasets[dataset]["text"]
     return vectorized_datasets
